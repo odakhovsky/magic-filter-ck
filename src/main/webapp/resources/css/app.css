@@ -1,0 +1,10 @@
+.thumb {
+    width: 200px;
+    height: 200px;
+    float: right;
+    margin-right: 35px;
+    position: relative;
+    display: inline;
+    left: 0;
+    padding-bottom: 15px;
+}
