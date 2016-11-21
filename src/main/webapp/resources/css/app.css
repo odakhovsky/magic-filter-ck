@@ -8,3 +8,74 @@
     left: 0;
     padding-bottom: 15px;
 }
+
+.parent {
+    overflow: hidden;
+}
+
+.card {
+    position: relative;
+}
+.card img {
+    width: 100%;
+    height: auto;
+    height: 350px;
+}
+
+.card i {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 36pt;
+    color: yellow;
+    background-color: red;
+    border-radius: 30px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.filter-name {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    background-color: #20462f;
+    color: #c6ff1d;
+    padding: 10px;
+    border-radius: 44px;
+}
