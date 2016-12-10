@@ -19,49 +19,50 @@
     <script src="<c:url value="/resources/js/app.js" />"></script>
 </head>
 <body ng-cloak ng-controller="AppController as vm" ng-init="vm.init()">
+<form novalidate name="vm.form" id="contactproForm" style="display: inline" method="post" enctype="multipart/form-data">
+
 <md-progress-linear ng-show="vm.isLoading" md-mode="indeterminate"></md-progress-linear>
-<md-content class="md-padding" layout="row">
-    <div flex-xs flex-gt-xs="100" layout="column">
-        <md-card>
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Обробка зображення фільтрами</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <form novalidate name="vm.form" id="contactproForm" style="display: inline" method="post"
-                      enctype="multipart/form-data">
-                    <img flex-gt-xs="100" layout="column" ng-show="vm.picFile[0] != null" ngf-src="vm.picFile[0]"
-                         class="thumb">
-                    <div> 1. Оберіть необхідне зображення
-                        <input type="file" id="file" class="input-text"
-                               name="attachement"
-                               accept="image/png, image/jpeg, image/jpg"
-                               ngf-select ng-model="vm.picFile"
-                               ng-disabled="vm.isLoading"
-                               required="required"
-                        />
-                    </div>
-                    <div>
-                        2. Оберіть фільтри
-                        <md-input-container>
-                            <label>Список фільтрів</label>
-                            <md-select ng-model="vm.selectedFilters" ng-disabled="vm.isLoading" required="required"
-                                       multiple>
-                                <md-option ng-value="filt.id" ng-repeat="filt in vm.filters">{{filt.name}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
-                    <md-button class="md-raised md-primary" ng-disabled="vm.isInvalidForm()"
-                               ng-click="vm.startUpload()">
-                        Застосувати фільтр{{vm.selectedFilters.length > 1 ? 'и': ''}}
-                    </md-button>
-                </form>
-            </md-card-content>
-        </md-card>
+
+<div class="menu" flex-xs flex-gt-xs="100" layout="row">
+    <ol class="steps">
+        <li><input type="file" id="file" class="input-text" name="attachement"
+                   accept="image/png, image/jpeg, image/jpg"
+                   ngf-select ng-model="vm.picFile" ng-disabled="vm.isLoading" required="required" /></li>
+        <li>
+            <md-input-container class="filters">
+                <label>Оберіть необхідний фільтр</label>
+                <md-select ng-model="vm.selectedFilters" ng-disabled="vm.isLoading" required="required"
+                           multiple>
+                    <md-option ng-value="filt.id" ng-repeat="filt in vm.filters">{{filt.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </li>
+        <li>
+            <md-button class="md-raised md-primary apply-btn" ng-disabled="vm.isInvalidForm()"
+                       ng-click="vm.startUpload()">
+                Застосувати фільтр{{vm.selectedFilters.length > 1 ? 'и': ''}}
+            </md-button>
+        </li>
+    </ol>
+</div>
+<div flex-xs flex-gt-xs="100" layout="row">
+    <div flex="50" ng-show="vm.picFile[0] != null">
+        <span id="original-image-title">Оригiнальне зображення</span>
+        <md-checkbox
+                ng-model="data.cb2"
+                ng-show="vm.picFile[0]"
+                class="md-warn md-align-top-left" flex>
+            Режим БОГА
+        </md-checkbox>
+        <img id="original-image" flex-gt-xs="100" layout="column" ngf-src="vm.picFile[0]"
+             class="thumb">
     </div>
-</md-content>
+    <div flex="50">
+        <img flex-gt-xs="100" layout="column" ng-show="vm.picFile[0] != null" ngf-src="vm.picFile[0]"
+             class="thumb">
+    </div>
+</div>
 
 
 <div class='md-padding' layout="row" flex>
@@ -75,5 +76,6 @@
         </div>
     </div>
 </div>
+</form>
 </body>
 </html>
