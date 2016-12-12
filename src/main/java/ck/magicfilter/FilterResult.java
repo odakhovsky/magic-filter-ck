@@ -12,7 +12,8 @@ import java.util.List;
 public class FilterResult {
     private String filterName;
     private String base64Image;
-    private List<StatisticElement> statistics;
+    private String[] labels;
+    private double[] values;
 
     public FilterResult() {
 
@@ -21,7 +22,6 @@ public class FilterResult {
     public FilterResult(String filterName, String base64Image) {
         this.filterName = filterName;
         this.base64Image = base64Image;
-        this.statistics = new ArrayList<>();
     }
 
     public String getFilterName() {
@@ -33,16 +33,8 @@ public class FilterResult {
     }
 
     public void addCalculation(CalculationResult calculationResult) {
-        String[] labels = calculationResult.labels();
-        double[] values = calculationResult.values();
-
-        for (int i = 0; i < labels.length; i++) {
-            this.statistics.add(new StatisticElement(labels[i], values[i]));
-        }
-    }
-
-    public List<StatisticElement> getStatistics() {
-        return this.statistics;
+        this.labels = calculationResult.labels();
+        this.values = calculationResult.values();
     }
 
     public void setFilterName(String filterName) {
@@ -53,7 +45,19 @@ public class FilterResult {
         this.base64Image = base64Image;
     }
 
-    public void setStatistics(List<StatisticElement> statistics) {
-        this.statistics = statistics;
+    public String[] getLabels() {
+        return labels;
+    }
+
+    public void setLabels(String[] labels) {
+        this.labels = labels;
+    }
+
+    public double[] getValues() {
+        return values;
+    }
+
+    public void setValues(double[] values) {
+        this.values = values;
     }
 }

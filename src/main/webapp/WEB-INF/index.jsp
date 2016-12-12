@@ -49,27 +49,31 @@
     <div flex-xs flex-gt-xs="100" layout="row">
         <div flex="40" ng-show="vm.picFile[0] != null">
             <span id="original-image-title">Оригiнальне зображення</span>
-            <md-checkbox
-                    ng-model="data.cb2"
-                    ng-show="vm.picFile[0]"
-                    class="md-warn md-align-top-left" flex>
-                Режим БОГА
-            </md-checkbox>
             <img id="original-image" flex-gt-xs="100" layout="column" ngf-src="vm.picFile[0]"
                  class="thumb">
         </div>
         <div flex="60">
             <div class="parent" layout="column" ng-repeat="group in vm.response.groups" flex>
                 <md-card class="card" ng-repeat="image in group">
-                    <img src="data:image/jpg;base64,{{image.base64Image}}">
-                    <i class="material-icons" ng-click="vm.download(image.base64Image)" title="Завантажити">get_app</i>
-                    <span class="filter-name">{{ image.filterName}}</span>
+                    <div layout="row">
+                        <div flex="30">
+                            <img src="data:image/jpg;base64,{{image.base64Image}}">
+                            <i class="material-icons" ng-click="vm.download(image.base64Image)" title="Завантажити">get_app</i>
+                            <span class="filter-name">{{ image.filterName}}</span>
+                        </div>
+                        <div flex="70">
+                            <canvas id="bar" class="chart chart-bar"
+                                    chart-data="image.values" chart-labels="image.labels" chart-series="vm.series">
+                            </canvas>
+                        </div>
+                    </div>
                 </md-card>
             </div>
         </div>
     </div>
 
-
 </form>
+
+
 </body>
 </html>

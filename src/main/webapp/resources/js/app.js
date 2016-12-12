@@ -24,6 +24,7 @@
             vm.picFile = {};
             vm.isLoading = false;
             vm.form = {};
+            vm.series = [];
         }
 
         function startLoading() {
@@ -45,6 +46,10 @@
                 data: {filters: vm.selectedFilters}
             }).then(function (resp) {
                 var images = resp['data'];
+
+                vm.labels = ['КМКСВП','КМКСВП','КМКСВП'];
+                vm.data = ['1','2','3'];
+
                 vm.response = {
                     groups: partition(images, images.length / 3),
                     images: images
