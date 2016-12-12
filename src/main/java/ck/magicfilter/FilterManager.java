@@ -1,10 +1,9 @@
 package ck.magicfilter;
 
 import ck.magicfilter.filters.Filter;
-import ck.magicfilter.filters.OloloFilter;
 import ck.magicfilter.filters.SobelFilter;
-import ck.magicfilter.filters.TestFilter;
 import ck.magicfilter.statistic.Calculate;
+import ck.magicfilter.statistic.CalculationResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
@@ -30,24 +29,19 @@ public class FilterManager {
         int length = !Objects.isNull(filterNames) ? filterNames.length : 0;
         List<String> filterNamesList = new ArrayList<>(Arrays.asList(filterNames));
         List<FilterResult> filterResults = new ArrayList<>(length);
-        BufferedImage[] filteredImages = new BufferedImage[length];
 
-        int i = 0;
         for (Filter filter : this.filters) {
             if (filterNamesList.contains(filter.name())) {
-                FilterResult filterResult = new FilterResult(filter.name(), filter.filter(image));
-                filterResults.add(filterResult);
+                SobelFilter.Pair<String, BufferedImage> result = filter.filter(image);
+                FilterResult filterResult = new FilterResult(filter.name(), result.getFirst());
 
-                filteredImages[i] = getFromBase64(filterResult.getBase64Image());
-                i++;
+                CalculationResult calculateResult = new Calculate(getFromMultipart(image), new BufferedImage[]{result.getSecond()});
+                filterResult.addCalculation(calculateResult);
+
+                filterResults.add(filterResult);
             }
         }
 
-
-
-        Calculate calculate = new Calculate(getFromMultipart(image), filteredImages);
-
-        System.out.println(calculate.getResultString());
         return filterResults;
     }
 

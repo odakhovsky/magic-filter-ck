@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 /**
  * <p>Обчислення всіх значень критеріїв.</p>
  */
-public class Calculate {
+public class Calculate implements CalculationResult{
     /**
      * <p>Нормалізовані дані обрахованих критеріїв.</p>
      */
@@ -75,5 +75,15 @@ public class Calculate {
      */
     public String[] getResultString() {
         return this.resultString;
+    }
+
+    @Override
+    public String[] labels() {
+        return resultString;
+    }
+
+    @Override
+    public double[] values() {
+        return resultDouble;
     }
 }
