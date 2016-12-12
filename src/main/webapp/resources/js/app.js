@@ -65,8 +65,7 @@
 
         function getFilters() {
             return [
-                {id: 'ololo_filter', name: 'Ololo filter'},
-                {id: 'test_filter', name: 'Test filter'}
+                {id: 'Sobel-Filter', name: 'Sobel Filter'}
             ]
         }
 

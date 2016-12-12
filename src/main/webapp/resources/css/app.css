@@ -28,8 +28,8 @@ input[type="file"] {
 }
 
 .thumb {
-    width: 200px;
-    height: 200px;
+    width: 600px;
+    height: 600px;
     float: right;
     margin-right: 35px;
     position: relative;
@@ -109,17 +109,12 @@ li md-checkbox {
     font-weight: bold !important;
 }
 
-.md-input-focused {
-    background: green;
-}
-
 #original-image {
     float: left;
     margin-left: 15px;
 }
 
 #original-image-title {
-    display: block;
     margin: 0 0 15px 15px;
     font-weight: bold;
     font-size: 16pt;

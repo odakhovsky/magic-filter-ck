@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -33,7 +34,7 @@ public class HomeController {
     public
     @ResponseBody
     List<FilterResult> uploadFileHandler(@RequestParam(value = "file", required = false) MultipartFile file,
-                                         HttpServletRequest request) throws ParseException {
+                                         HttpServletRequest request) throws ParseException, IOException {
         return filterManager.apply(file, parseFilters(request));
     }
 
