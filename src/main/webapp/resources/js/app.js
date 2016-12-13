@@ -70,7 +70,8 @@
 
         function getFilters() {
             return [
-                {id: 'Sobel-Filter', name: 'Sobel Filter'}
+                {id: 'Sobel-Filter', name: 'Sobel Filter'},
+                {id: 'Kirsch_Filter', name: 'Kirsch Filter'}
             ]
         }
 

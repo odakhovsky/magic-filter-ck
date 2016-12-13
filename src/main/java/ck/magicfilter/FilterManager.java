@@ -1,6 +1,7 @@
 package ck.magicfilter;
 
 import ck.magicfilter.filters.Filter;
+import ck.magicfilter.filters.KirschFilter;
 import ck.magicfilter.filters.SobelFilter;
 import ck.magicfilter.statistic.Calculate;
 import ck.magicfilter.statistic.CalculationResult;
@@ -22,7 +23,7 @@ public class FilterManager {
     private Filter[] filters;
 
     public FilterManager() {
-        this.filters = new Filter[]{new SobelFilter()};
+        this.filters = new Filter[]{new SobelFilter(), new KirschFilter()};
     }
 
     public List<FilterResult> apply(MultipartFile image, String[] filterNames) throws IOException {
@@ -32,7 +33,7 @@ public class FilterManager {
 
         for (Filter filter : this.filters) {
             if (filterNamesList.contains(filter.name())) {
-                SobelFilter.Pair<String, BufferedImage> result = filter.filter(image);
+                Pair<String, BufferedImage> result = filter.filter(image);
                 FilterResult filterResult = new FilterResult(filter.name(), result.getFirst());
 
                 CalculationResult calculateResult = new Calculate(getFromMultipart(image), new BufferedImage[]{result.getSecond()});

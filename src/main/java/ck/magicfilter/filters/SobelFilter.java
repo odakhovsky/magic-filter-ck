@@ -1,11 +1,15 @@
 package ck.magicfilter.filters;
 
+import ck.magicfilter.Pair;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class SobelFilter implements Filter {
 
@@ -110,29 +114,5 @@ public class SobelFilter implements Filter {
         return retVal;
     }
 
-    public static class Pair<K,V> {
-        private K first;
-        private V second;
 
-        public Pair(K first, V second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        public K getFirst() {
-            return first;
-        }
-
-        public void setFirst(K first) {
-            this.first = first;
-        }
-
-        public V getSecond() {
-            return second;
-        }
-
-        public void setSecond(V second) {
-            this.second = second;
-        }
-    }
 }
