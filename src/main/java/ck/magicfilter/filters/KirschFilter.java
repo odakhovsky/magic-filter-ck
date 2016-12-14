@@ -14,13 +14,13 @@ import java.io.InputStream;
 public class KirschFilter implements Filter {
 
     private int[][] Kirschx = {
-            {-3, -3,  5},
-            {-3,  0,  5},
-            {-3, -3,  5}};
+            {-1, 0, 1},
+                    {-2, 0, 2},
+                    {-1, 0, 1}};
     private int[][] Kirschy = {
-            {5,   5,  5},
-            {-3,  0, -3},
-            {-3, -3, -3}};
+            {1, 2, 1},
+            {0, 0, 0},
+            {-1, -2, -1}};
 
     public int lum(int r, int g, int b) {
         return (r + r + r + b + g + g + g + g) >> 3;
